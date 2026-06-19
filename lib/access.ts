@@ -51,7 +51,7 @@ export async function syncUserAccess(userId: string, email?: string | null) {
 export async function ensureRegistrationRecords(userId: string, email?: string | null) {
   const access = await syncUserAccess(userId, email);
 
-  // User gaya but session zinda → access null aata hai. Ruk jao, warna FK error.
+  // User gaya but session active → access null aata hai. Ruk jao, warna Foreign key error.
   if (!access) {
     return;
   }

@@ -165,12 +165,6 @@ For local development, Google credentials are optional. Set `LOCAL_DEV_AUTH_ENAB
 - **Continue as applicant (dev)** — signs in as `applicant@shardup.local` to test the application flow. This is a throwaway test account: it is reset to `PENDING` with a fresh blank application on every login, so you can re-run the flow repeatedly.
 - **Continue as admin (dev)** — signs in as `admin@shardup.local` to test application review. Make sure `admin@shardup.local` is in `ADMIN_EMAILS`.
 
-### How the Application Portal works
-
-Registration is application-first. Signing in creates the user identity (and opens a blank application automatically), but member access stays gated until an admin approves the application.
-
-- Applicants complete and submit their application at `/apply`, and see its status there.
-- Admins review submitted applications at `/admin/applications` and approve or reject them. Approving grants the applicant member access.
 
 ### Useful commands
 
