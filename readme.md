@@ -169,6 +169,7 @@ This is a Next.js app that deploys directly to Vercel.
    - `AUTH_GOOGLE_SECRET` — Google OAuth client secret
    - `AUTH_URL` — `https://YOUR_DOMAIN` (no trailing slash)
    - `ADMIN_EMAILS` — comma-separated admin emails
+   - `AUTH_DEBUG` — optional temporary value `true` for Auth.js debugging in Vercel logs
    - `NEXT_PUBLIC_` prefix is not needed for any current variable
 
 5. **Google OAuth redirect URI:** Add `https://YOUR_DOMAIN/api/auth/callback/google` to the Google Cloud OAuth client.
@@ -189,3 +190,4 @@ Or set up a Vercel Deploy Hook / CI step that runs `prisma migrate deploy` after
 - Make sure your production Postgres provider allows connections from Vercel serverless functions.
 - Some providers require a connection pooler URL for serverless environments.
 - Do not commit `.env.local` or any real credentials to the repo.
+- Visit `/api/health` after deployment to verify required environment variables and database connectivity without exposing secret values.
