@@ -68,9 +68,18 @@ export default async function EventDetailPage({
         <h1>{event.title}</h1>
         {event.imageUrl ? <img className="event-hero-image" src={event.imageUrl} alt="" /> : null}
         <div className="event-detail-meta">
-          <p>{formatEventDate(event.startsAt, event.endsAt)}</p>
-          <p>{event.location}</p>
-          <p>{event._count.rsvps} going</p>
+          <p>
+            <span>When</span>
+            {formatEventDate(event.startsAt, event.endsAt)}
+          </p>
+          <p>
+            <span>Where</span>
+            {event.location}
+          </p>
+          <p>
+            <span>RSVPs</span>
+            {event._count.rsvps} going
+          </p>
         </div>
         <p>{event.description}</p>
         <div className="event-detail-actions">

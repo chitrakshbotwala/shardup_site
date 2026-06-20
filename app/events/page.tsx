@@ -76,14 +76,15 @@ export default async function EventsPage() {
                     </a>
                   ) : null}
                   <div>
-                    <p className="event-meta">{formatEventDate(event.startsAt, event.endsAt)}</p>
                     <h2>
                       <a href={`/events/${event.id}`}>{event.title}</a>
                     </h2>
+                    <div className="event-summary-meta">
+                      <span>{formatEventDate(event.startsAt, event.endsAt)}</span>
+                      <span>{event.location}</span>
+                      <span>{event._count.rsvps} going</span>
+                    </div>
                     <p>{event.description}</p>
-                    <p className="event-meta">
-                      {event.location} · {event._count.rsvps} going
-                    </p>
                   </div>
                   <div className="event-actions">
                     <RsvpControl

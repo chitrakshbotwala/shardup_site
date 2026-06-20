@@ -4,6 +4,7 @@
   --muted: #5b665d;
   --paper: #fbfaf3;
   --line: #d9ded6;
+  --font-main: Arial, Helvetica, sans-serif;
 }
 
 * {
@@ -18,7 +19,7 @@ body {
   margin: 0;
   background: var(--paper);
   color: var(--ink);
-  font-family: Georgia, "Times New Roman", serif;
+  font-family: var(--font-main);
 }
 
 a {
@@ -60,7 +61,7 @@ a {
 
 .brand {
   color: var(--accent);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-main);
   font-size: 1.45rem;
   font-weight: 800;
   letter-spacing: -0.04em;
@@ -72,7 +73,7 @@ a {
   flex-wrap: wrap;
   gap: 22px;
   color: var(--muted);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-main);
   font-size: 0.95rem;
 }
 
@@ -94,7 +95,7 @@ a {
 .section-label {
   margin: 0 0 14px;
   color: var(--accent);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-main);
   font-size: 0.78rem;
   font-weight: 800;
   letter-spacing: 0.14em;
@@ -122,7 +123,7 @@ a {
   align-items: center;
   gap: 22px;
   margin-top: 36px;
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-main);
 }
 
 .button,
@@ -135,7 +136,7 @@ a {
   border: 2px solid var(--ink);
   box-shadow: 5px 5px 0 var(--ink);
   color: var(--ink);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-main);
   font-weight: 800;
   line-height: 1;
   text-align: center;
@@ -207,7 +208,7 @@ a {
   background: var(--paper);
   border: 1px solid var(--line);
   border-top: 4px solid var(--accent);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-main);
   font-size: 1.05rem;
   font-weight: 800;
 }
@@ -219,7 +220,7 @@ a {
   gap: 20px;
   padding: 28px 0;
   color: var(--muted);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-main);
   font-size: 0.95rem;
 }
 
@@ -302,7 +303,7 @@ a {
   display: grid;
   gap: 8px;
   color: var(--ink);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-main);
   font-weight: 800;
 }
 
@@ -326,7 +327,7 @@ a {
   border-left: 4px solid var(--accent);
   background: #fffef8;
   color: var(--ink);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-main);
   font-size: 1rem;
   line-height: 1.5;
 }
@@ -360,7 +361,7 @@ a {
 .application-summary h2,
 .application-summary strong {
   color: var(--ink);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-main);
 }
 
 .application-list {
@@ -414,21 +415,23 @@ a {
 
 .event-image,
 .event-hero-image {
+  display: block;
   width: 100%;
   border: 1px solid var(--line);
-  object-fit: cover;
+  background: #fffef8;
 }
 
 .event-image {
   aspect-ratio: 4 / 3;
   height: 100%;
   min-height: 150px;
+  object-fit: contain;
 }
 
 .event-hero-image {
-  aspect-ratio: 16 / 9;
-  max-height: 360px;
+  height: auto;
   margin-top: 28px;
+  object-fit: contain;
 }
 
 .event-card h2 {
@@ -450,11 +453,30 @@ a {
   margin-bottom: 0;
 }
 
+.event-summary-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 12px 0 14px;
+}
+
+.event-summary-meta span {
+  padding: 7px 10px;
+  border: 1px solid var(--line);
+  border-left: 3px solid var(--accent);
+  background: var(--paper);
+  color: var(--muted);
+  font-family: var(--font-main);
+  font-size: 0.88rem;
+  font-weight: 800;
+  line-height: 1.25;
+}
+
 .event-meta,
 .event-note,
 .event-detail-meta {
   color: var(--muted);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-main);
   font-size: 0.95rem;
   line-height: 1.5;
 }
@@ -478,15 +500,28 @@ a {
 
 .event-detail-meta {
   display: grid;
-  gap: 6px;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
   margin: 24px 0;
-  padding: 18px;
-  border-left: 4px solid var(--accent);
-  background: #fffef8;
 }
 
 .event-detail-meta p {
   margin: 0;
+  padding: 14px;
+  border: 1px solid var(--line);
+  border-top: 4px solid var(--accent);
+  background: #fffef8;
+  color: var(--ink);
+  font-weight: 800;
+}
+
+.event-detail-meta span {
+  display: block;
+  margin-bottom: 6px;
+  color: var(--accent);
+  font-size: 0.7rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
 }
 
 .event-detail-actions {
@@ -530,7 +565,8 @@ a {
   .about-section,
   .pillar-list,
   .application-row,
-  .event-card {
+  .event-card,
+  .event-detail-meta {
     grid-template-columns: 1fr;
   }
 
