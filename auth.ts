@@ -82,6 +82,7 @@ const providers = [
 
 export const { handlers, signIn, signOut, auth } = NextAuth({
   adapter: PrismaAdapter(prisma),
+  trustHost: process.env.AUTH_TRUST_HOST === "true" || process.env.VERCEL === "1",
   secret:
     process.env.AUTH_SECRET ??
     (isDevelopment ? "shardup-development-only-auth-secret" : undefined),
