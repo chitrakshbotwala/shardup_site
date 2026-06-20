@@ -26,7 +26,7 @@ export function localDevProviderId(role: LocalDevRole) {
   return LOCAL_DEV_IDENTITIES[role].id;
 }
 
-// Dev-only logins (admin + applicant) for local testing without Google. Prod me off.
+// Dev-only logins (admin + applicant) for local testing without Google. Off in production.
 function makeLocalDevProvider(role: LocalDevRole) {
   const isAdmin = role === "admin";
   const { id, email, name } = LOCAL_DEV_IDENTITIES[role];
@@ -41,7 +41,7 @@ function makeLocalDevProvider(role: LocalDevRole) {
         update: {
           name,
           role: isAdmin ? Role.ADMIN : Role.MEMBER,
-          // Dev applicant ek test account hai — har login pe PENDING pe reset.
+          // The dev applicant is a test account — reset to PENDING on every login.
           status: isAdmin ? UserStatus.ACTIVE : UserStatus.PENDING,
         },
         create: {
@@ -52,7 +52,7 @@ function makeLocalDevProvider(role: LocalDevRole) {
         },
       });
 
-      // Purani application delete → har login pe fresh draft. Admin ko application nahi banti.
+      // Clear the old application so each login starts a fresh draft. Admins don't get one.
       if (!isAdmin) {
         await prisma.application.deleteMany({ where: { userId: user.id } });
       }

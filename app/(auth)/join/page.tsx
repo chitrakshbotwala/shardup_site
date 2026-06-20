@@ -10,7 +10,7 @@ import { prisma } from "../../../lib/prisma";
 export default async function JoinPage() {
   const session = await auth();
 
-  // User abhi bhi exist kare tabhi redirect — warna deleted-user ka session /join <-> /apply loop karta hai.
+  // Only redirect if the user still exists — otherwise a deleted-user session loops between /join and /apply.
   if (session?.user?.id) {
     const user = await prisma.user.findUnique({
       where: { id: session.user.id },
